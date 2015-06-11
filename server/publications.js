@@ -19,6 +19,9 @@ Meteor.publish('projects',function(userId){
 Meteor.publish('customers',function(){
     return Customers.find();
 });
+Meteor.publish('requests',function(userId){
+    return Requests.find({$or:[{invited:this.userId},{userId:this.userId}]});
+});
 Meteor.publish('calevents',function(project){
   return Calevents.find({project:project});
 });

@@ -6,8 +6,20 @@ Router.map(function() {
   });
   this.route('req', {
     path: '/req',
-    layoutTemplate:'mainLayout'
+    layoutTemplate:'nosidebar',
+    loginRequired: 'entrySignIn',
+    waitOn:function(){
+      return Meteor.subscribe('requests',Meteor.userId());
+    },
+    data:{
+    'requests': function(){
+      return Requests.find();
+    }
+  }
   });
+
+
+
   this.route('customers', {
     path: '/customers',
     layoutTemplate:'mainLayout',
@@ -19,7 +31,8 @@ Router.map(function() {
       'customers':function(){
         return Customers.find({});
       }
-    },
+      },
+
     onAfterAction: function() {
       SEO.set({
         title: 'Customers | ' + SEO.settings.title

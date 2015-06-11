@@ -9,4 +9,5 @@ Requests.allow({
   remove: function(){
     return true;
   }
+
 });

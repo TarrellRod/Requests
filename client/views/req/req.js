@@ -2,6 +2,8 @@
 Template.req.rendered = function() {
   $('[data-toggle="popover"]').popover()
   this.$('.date').datepicker();
+  
+
 };
 
 Template.req.helpers({
@@ -9,7 +11,12 @@ Template.req.helpers({
     var countChr = 300;
     var used = 5;
      return countChr - used;
-  }
+  },
+
+    requests: function(){
+      return Requests.find();
+    }
+
 });
 
 Template.req.events({
@@ -25,14 +32,31 @@ Template.req.events({
     var first = event.target.firstName.value;
     var last = event.target.lastName.value;
     var date = event.target.date.value;
+    var time = event.target.time.value;
+    var tChair = event.target.require.value;
+    var numTable = event.target.table.value
+    var numChair = event.target.chair.value;
+    var email = event.target.email.value;
     Requests.insert({
       first: first,
       last: last,
-      date: date
+      date: date,
+      time: time,
+      tChair: tChair,
+      numTable: numTable,
+      numChair: numChair,
+      email: email
+
+
     });
     event.target.firstName.value ="";
     event.target.lastName.value = "";
     event.target.date.value = "";
+    event.target.time.value="";
+    event.target.require.value="";
+    event.target.table.value="";
+    event.target.chair.value="";
+    event.target.email.value="";
     return false;
     console.log("got it");
     console.log(event.type);

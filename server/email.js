@@ -17,8 +17,8 @@ _.each(users, function (userData) {
 });
 }
   Meteor.Mailgun.config({
-    username: 'postmaster@domain.com',
-    password: 'password-goes-here'
+    username: 'tarrellrodrigues@gmail.com',
+    password: ''
   });
   if(Customers.find().count() < 1){
     return Customers.insert({name:'House Account'});
