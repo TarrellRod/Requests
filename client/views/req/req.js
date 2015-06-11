@@ -2,7 +2,7 @@
 Template.req.rendered = function() {
   $('[data-toggle="popover"]').popover()
   this.$('.date').datepicker();
-  
+
 
 };
 
@@ -15,10 +15,19 @@ Template.req.helpers({
 
     requests: function(){
       return Requests.find();
+    },
+    requestToDelete:function(){
+      return Session.get('requestToDelete');
     }
 
-});
 
+});
+Template.deleconfirm.events({
+  'click .deleteConfirmed':function(evt,tmpl){
+    Meteor.call('removeRequest',Session.get('requestToDelete'));
+    Session.set('requestToDelete',null);
+  }
+})
 Template.req.events({
 
   'click .tableCheck':function(event){
@@ -60,5 +69,13 @@ Template.req.events({
     return false;
     console.log("got it");
     console.log(event.type);
+  },
+  'click .deleteConfirmation':function(evt,tmpl){
+    evt.preventDefault();
+    evt.stopPropagation();
+    Session.set('requestToDelete',this._id);
+  },
+  'click .cancelDelete':function(){
+    return Session.set('requestToDelete',null);
   }
 });

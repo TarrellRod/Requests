@@ -29,7 +29,9 @@
   </div>
 </template>
 <template name="req">
-
+  {{#if requestToDelete}}
+    {{>deleconfirm}}
+  {{/if}}
   <div class="req">
     <ol class="breadcrumb">
       <li><a href="{{pathFor 'home'}}"><i class="fa fa-home"></i> Home</a></li>
