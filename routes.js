@@ -18,7 +18,31 @@ Router.map(function() {
   }
   });
 
+  this.route('requestView',{
+    path:'/requests/:id',
+    layoutTemplate:'mainLayout',
+    loginRequired:'entrySignIn',
+    waitOn:function(){
+      Meteor.subscribe('customers');
+      Meteor.subscribe('conversations',this.params.id);
+      Meteor.subscribe('todos',this.params.id);
+      Meteor.subscribe('calevents',this.params.id);
+      Meteor.subscribe('uploads',this.params.id);
+      Meteor.subscribe('directory');
+      Meteor.subscribe('chats');
 
+      return Meteor.subscribe('requests');
+    },
+    data:function(){
+      Session.set('active_request',this.params.id);
+      return Requests.findOne({_id:this.params.id});
+    },
+    onAfterAction:function(){
+      SEO.set({
+        title:'Request View | ' + SEO.settings.title
+      })
+    }
+  });
 
   this.route('customers', {
     path: '/customers',

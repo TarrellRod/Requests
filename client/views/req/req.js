@@ -69,6 +69,7 @@ Template.req.events({
     return false;
     console.log("got it");
     console.log(event.type);
+    Meteor.call('saveRequest',request);
   },
   'click .deleteConfirmation':function(evt,tmpl){
     evt.preventDefault();

@@ -50,9 +50,25 @@ _.each(users, function (userData) {
       project.invited = [];
       return Projects.insert(project);
     },
+
     'removeProject':function(id){
 
       return Projects.remove({_id:id});
+    },
+    'saveRequest':function(request){
+
+      check(request.name,String);
+      request.userId = Meteor.userId();
+      request.dateentered = new Date();
+      request.lastupdate = new Date();
+      if(!request.datedue){
+        request.datedue = new Date();
+      }
+      if(!request.customer){
+        request.customer = Customers.findOne({})._id;
+      }
+      request.invited = [];
+      return Requests.insert(request);
     },
     'removeRequest':function(id){
 
