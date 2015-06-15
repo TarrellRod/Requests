@@ -20,7 +20,7 @@ Router.map(function() {
 
   this.route('requestView',{
     path:'/requests/:id',
-    layoutTemplate:'mainLayout',
+    layoutTemplate:'nosidebar',
     loginRequired:'entrySignIn',
     waitOn:function(){
       Meteor.subscribe('customers');
