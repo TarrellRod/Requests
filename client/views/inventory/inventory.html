@@ -1,0 +1,66 @@
+
+<template name="inView">
+  <div class="col-md-8">
+
+    <div class="panel panel-default">
+    <div class="panel-heading"><p>number of 8' tables: {{table8Ft}}</p></div>
+    <div class="panel-body">
+      
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+  <div class="panel-heading"><p>number of 6' tables: {{table6Ft}}</p></div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
+
+
+  <div class="panel panel-default">
+  <div class="panel-heading"><p>Number of metal chairs: {{metalChair}}</p></div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
+
+  <div class="panel panel-default">
+  <div class="panel-heading"><p>Number of white chairs: {{whiteChair}}</p></div>
+  <div class="panel-body">
+    Panel content
+  </div>
+</div>
+
+</div>
+</template>
+
+<template name="inventory">
+<form>
+<div class="col-md-3">
+
+
+  <div class="col-sm-1-12">
+    Number of 8' tables<br>
+    <input type="text" name="tbl8" class="form-control">
+  </div>
+
+  <div class="col-sm-1-12">
+    Number of 6' tables<br>
+    <input type="text" name="tbl6" class="form-control">
+  </div>
+
+<div class="col-sm-1-12">
+  Number of Metal chairs<br>
+  <input type="text" name="metChair" value="" class="form-control">
+</div>
+<div class="col-sm-1-12">
+  Number of White chair <br>
+  <input type="text" name="whiteChair" value="" class="form-control">
+</div>
+<button type="submit" class="btn btn-default">Submit</button>
+</div>
+</form>
+{{#each InView}}
+{{>inView}}
+{{/each}}
+</template>

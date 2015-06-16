@@ -4,6 +4,19 @@ Router.map(function() {
     path: '/',
     layoutTemplate:'nosidebar'
   });
+  this.route('inventory', {
+    path: '/inventory',
+    layoutTemplate:'nosidebar',
+    loginRequired: 'entrySignIn',
+    waitOn:function(){
+      return Meteor.subscribe('inventory',Meteor.userId());
+    },
+    data:{
+    'inventory': function(){
+      return Inventory.find();
+    }
+  }
+  });
   this.route('req', {
     path: '/req',
     layoutTemplate:'nosidebar',

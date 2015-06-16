@@ -19,6 +19,9 @@ Meteor.publish('projects',function(userId){
 Meteor.publish('customers',function(){
     return Customers.find();
 });
+Meteor.publish('inventory',function(){
+    return Inventory.find();
+});
 Meteor.publish('requests',function(userId){
     return Requests.find();
 });
