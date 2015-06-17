@@ -4,12 +4,32 @@ Router.map(function() {
     path: '/',
     layoutTemplate:'nosidebar'
   });
+
+  this.route('confirm', {
+    path: '/confirm',
+    layoutTemplate:'nosidebar',
+    loginRequired: 'entrySignIn',
+    waitOn:function(){
+      Meteor.subscribe('inventory');
+      Meteor.subscribe('requests');
+
+    },
+    data:{
+    'inventory': function(){
+      return Inventory.find();
+    },
+    'requests': function(){
+      return Requests.find();
+      }
+    }
+  });
+
   this.route('inventory', {
     path: '/inventory',
     layoutTemplate:'nosidebar',
     loginRequired: 'entrySignIn',
     waitOn:function(){
-      return Meteor.subscribe('inventory',Meteor.userId());
+      return Meteor.subscribe('inventory');
     },
     data:{
     'inventory': function(){
@@ -17,6 +37,7 @@ Router.map(function() {
     }
   }
   });
+
   this.route('req', {
     path: '/req',
     layoutTemplate:'nosidebar',
@@ -44,6 +65,7 @@ Router.map(function() {
       Meteor.subscribe('directory');
       Meteor.subscribe('chats');
 
+
       return Meteor.subscribe('requests');
     },
     data:function(){
@@ -54,7 +76,8 @@ Router.map(function() {
       SEO.set({
         title:'Request View | ' + SEO.settings.title
       })
-    }
+    },
+
   });
 
   this.route('customers', {

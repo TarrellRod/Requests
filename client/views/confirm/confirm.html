@@ -1,0 +1,93 @@
+
+
+
+<template name="confirm">
+  <div class="container-fluid">
+
+  <div class="row">
+<div class="col-md-8">
+
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">All event requests</h3>
+    </div>
+      <div class="panel-body">
+        {{>confirmReq}}
+      </div>
+  </div>
+</div>
+</div>
+</div>
+
+<div class="container-fluid">
+
+<div class="row">
+<div class="col-md-8">
+
+
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">All Available Inventory</h3>
+  </div>
+    <div class="panel-body">
+      {{>confirmInv}}
+    </div>
+</div>
+</div>
+</div>
+</div>
+
+
+</template>
+
+<template name="confirmReq">
+
+
+  <table class="table">
+    <thead>
+      <th>Frist Name</th>
+      <th>Last Name</th>
+      <th>Date</th>
+      <th>Number of Chairs</th>
+    </thead>
+    <tbody>
+      {{#each requests}}
+    <tr>
+      <td>{{first}}</td>
+      <td>{{last}}</td>
+      <td>{{date}}</td>
+      <td>{{numChair}}</td>
+      <button type="submit" class="btn btn-default button">Confirm</button>
+    </tr>
+    {{/each}}
+  </tbody>
+  </table>
+
+</template>
+<template name="confirmInv">
+
+
+  <table class="table">
+    <thead>
+      <th># of 8ft Tables</th>
+      <th># of 6ft Tables</th>
+      <th># of Metal Chairs</th>
+      <th># of White Chairs</th>
+    </thead>
+    <tbody>
+      {{#each inventory}}
+    <tr>
+      <td>{{table8Ft}}</td>
+      <td>{{table6Ft}}</td>
+      <td>{{metalChair}}</td>
+      <td>{{whiteChair}}</td>
+
+    </tr>
+    {{/each}}
+  </tbody>
+  </table>
+
+</template>

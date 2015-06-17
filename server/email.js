@@ -92,6 +92,13 @@ _.each(users, function (userData) {
         }
       });
     },
+    'updateInv': function(){
+      return Inventory.update({
+        $set:{
+          metalChair: 200
+        }
+      },0,1);
+    },
     'addCustomer': function (name) {
       return Customers.insert({name: name});
     },
